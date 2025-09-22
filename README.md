@@ -1,1 +1,1 @@
-https://prod.liveshare.vsengsaas.visualstudio.com/join?D75ECBAF2BDBC213383AF40513E36572BF1D  # KasiKonnect
+https://prod.liveshare.vsengsaas.visualstudio.com/join?5DECCF26D10BC3D1A301129377BB8FC9DFAD  # KasiKonnect
