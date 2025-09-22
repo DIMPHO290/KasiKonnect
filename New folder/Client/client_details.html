@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<link rel="stylesheet" href="../style.css">
+	<title>Client Details - KasiKonnect</title>
+</head>
+<body>
+	<header>
+		<div class="container">
+			<h1>KasiKonnect - Client</h1>
+			<nav aria-label="Main navigation">
+				<ul>
+					<li><a href="home_client.html">Home</a></li>
+					<li><a href="client_profile.html">Profile</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+
+	<main>
+
+		<section class="container card">
+			<h2>Client details</h2>
+			<p class="muted">Fill in information to help businesses and freelancers serve you better.</p>
+			<form>
+				<label for="clientName">Full name</label>
+				<input id="clientName" name="clientName">
+
+				<label for="clientContact">Email or phone</label>
+				<input id="clientContact" name="clientContact">
+
+				<label for="preferences">Service preferences</label>
+				<input id="preferences" name="preferences">
+
+				<div style="margin-top:0.75rem"><button class="btn">Save</button></div>
+			</form>
+		</section>
+
+	</main>
+
+	<footer>
+		<div class="container">
+			<div class="header-brand"><img src="../logo.jpg" alt="KasiKonnect" class="site-logo"><h1>Client Details</h1></div>
+			<nav aria-label="Main navigation">
+				<ul>
+					<li><a href="home_client.html">Home</a></li>
+					<li><a href="client_profile.html">Profile</a></li>
+					<li><a href="request_services.html">Request Services</a></li>
+					<li><a href="../login.html" onclick="logoutUser(); return false;">Logout</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
