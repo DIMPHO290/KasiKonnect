@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+<head>
+	<link rel="stylesheet" href="../style.css">
+	<title>Business Home</title>
+	<script src="../common.js"></script>
+</head>
+<body>
+	<header>
+		<div class="container">
+			<div class="header-brand"><img src="../logo.jpg" alt="KasiKonnect" class="site-logo"><h1>KasiKonnect - Business</h1></div>
+			<nav aria-label="Main navigation">
+				<ul>
+					<li><a href="home_business.html">Home</a></li>
+					<li><a href="business_profile.html">Profile</a></li>
+					<li><a href="Funding.html">Funding Portal</a></li>
+					<li><a href="../login.html" onclick="logoutUser(); return false;">Logout</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+	<main>
+		<section class="container">
+			<h2>Welcome, Business User!</h2>
+			<p class="muted">Business: <strong id="businessName">—</strong> &nbsp; | &nbsp; Reg ID: <strong id="businessReg">—</strong></p>
+			<p>This is your business dashboard.</p>
+
+			<!-- Funding status -->
+			<div class="row" style="margin-top:1rem;">
+				<div class="card col compact">
+					<h3>Funding status</h3>
+					<div id="fundStage" class="muted">Loading…</div>
+					<p style="margin-top:0.5rem">Application ID: <span id="fundId">—</span></p>
+
+					<p id="fundNotes" class="muted" style="margin-top:0.5rem"></p>
+				</div>
+				<div class="card col compact">
+					<h3>Customers requesting goods/services</h3>
+					<div id="customerRequests" style="display:grid;gap:0.5rem;margin-top:0.5rem"></div>
+				</div>
+			</div>
+
+			<!-- Recent activity -->
+			<div class="card" style="margin-top:1rem">
+				<h3>Recent activity</h3>
+				<div id="businessActivity" style="margin-top:0.5rem;display:grid;gap:0.5rem"></div>
+			</div>
+
+		</section>
+	</main>
+	<footer>
+		<div class="container">
+			<p>&copy; 2025 KasiKonnect. All rights reserved.</p>
+		</div>
+	</footer>
+	<script>
+	// Mock data for business dashboard (funding and customer requests)
+	const mockBusinessData = {
+        funding: {
+			stage: 'Under review',
+			id: 'FN-2025-0912-87',
+			notes: 'Application received — expected decision in 7 working days.'
+		},
+		businessName: 'KasiKrafts Traders',
+		regId: 'BR-987654321',
+		requests: [
+			{ id: 3, customer: 'City Clinic', request: 'Weekly cleaning services', date: '2025-09-12', status: 'Accepted' }
+		],
+		activity: [
+			{ id:1, text:'Invoice #INV-120 paid (R4,500)', date:'2025-09-14' },
+			{ id:2, text:'New message from N. Dlamini regarding delivery', date:'2025-09-18' },
+			{ id:3, text:'Funding application submitted', date:'2025-09-12' }
+		]
+	};
+
+	function renderBusinessMock() {
+		document.getElementById('businessName').textContent = mockBusinessData.businessName || '—';
+		document.getElementById('businessReg').textContent = mockBusinessData.regId || '—';
+		document.getElementById('fundStage').textContent = mockBusinessData.funding.stage;
+		document.getElementById('fundId').textContent = mockBusinessData.funding.id;
+		document.getElementById('fundNotes').textContent = mockBusinessData.funding.notes;
+
+		const reqEl = document.getElementById('customerRequests');
+		reqEl.innerHTML = '';
+		mockBusinessData.requests.forEach(r => {
+			const el = document.createElement('div');
+			el.className = 'card compact';
+			el.innerHTML = `<div style="display:flex;justify-content:space-between;align-items:center"><div><strong>${r.customer}</strong><div class=\"muted\">${r.request}</div></div><div style=\"text-align:right\"><div class=\"muted\">${r.date}</div><div style=\"margin-top:0.25rem;font-weight:700\">${r.status}</div></div></div>`;
+			reqEl.appendChild(el);
+		});
+
+		const actEl = document.getElementById('businessActivity');
+		actEl.innerHTML = '';
+		mockBusinessData.activity.forEach(a => {
+			const el = document.createElement('div');
+			el.className = 'muted';
+			el.textContent = `${a.date} — ${a.text}`;
+			actEl.appendChild(el);
+		});
+	}
+
+	// initialize
+	renderBusinessMock();
+	</script>
+</body>
+</html>

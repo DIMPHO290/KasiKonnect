@@ -1,0 +1,132 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<link rel="stylesheet" href="fdetails.css">
+		<title>Freelancer Details - KasiKonnect</title>
+	</head>
+	<body>
+		<header>
+			<div class="container">
+				<h1>KasiKonnect  Freelancer Profile</h1>
+				<nav aria-label="Main navigation">
+					<ul>
+						<li><a href="../home_home.html">Home</a></li>
+						<li><a href="../Freelancers/Job_Listings.html">Job Listings</a></li>
+						<li><a href="../register.html">Register</a></li>
+						<li><a href="../login.html">Sign In</a></li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+
+		<main>
+			<section aria-labelledby="profile-heading">
+				<div class="container">
+					<h2 id="profile-heading">Freelancer details</h2>
+					<p>Fill out your profile so clients can find and hire you. All fields are optional unless marked required.</p>
+
+					<form action="#" method="post" enctype="multipart/form-data" aria-describedby="profile-note">
+						<fieldset>
+							<legend>Personal</legend>
+
+							<div>
+								<label for="full-name">Full name <span aria-hidden="true">*</span></label>
+								<input type="text" id="full-name" name="fullName" placeholder="Jane Doe" required aria-required="true" autocomplete="name">
+								<p class="hint">Use the name you want clients to see.</p>
+							</div>
+
+							<div>
+								<label for="display-title">Professional title</label>
+								<input type="text" id="display-title" name="title" placeholder="Web developer, Graphic designer, etc.">
+								<p class="hint">A short title shown on your profile (e.g., Plumber).</p>
+							</div>
+
+							<div>
+								<label for="email">Email <span aria-hidden="true">*</span></label>
+								<input type="email" id="email" name="email" placeholder="you@example.com" required aria-required="true" autocomplete="email">
+								<p class="hint">We'll use this to contact you. This won't be publicly visible unless you choose to show it.</p>
+							</div>
+
+							<div>
+								<label for="phone">Phone</label>
+								<input type="tel" id="phone" name="phone" placeholder="+27 71 123 4567" autocomplete="tel">
+								<p class="hint">Optional. Include country code for best results.</p>
+							</div>
+						</fieldset>
+
+						<fieldset>
+							<legend>Professional</legend>
+
+							<div>
+								<label for="skills">Skills</label>
+								<input type="text" id="skills" name="skills" placeholder="comma-separated (e.g., HTML, CSS, JS)">
+								<p class="hint">Add core skills separated by commas to help clients find you.</p>
+							</div>
+
+							<div>
+								<label for="hourly-rate">Hourly rate (optional)</label>
+								<input type="number" id="hourly-rate" name="rate" min="0" step="0.01" placeholder="200">
+								<p class="hint">Optional. Enter your typical hourly rate in your local currency.</p>
+							</div>
+
+							<div>
+								<label for="availability">Availability</label>
+								<select id="availability" name="availability">
+									<option value="">-- Select availability --</option>
+									<option value="immediate">Available now</option>
+									<option value="1-2weeks">1-2 weeks</option>
+									<option value="1month">1 month</option>
+									<option value="not">Not available</option>
+								</select>
+								<p class="hint">Indicate when you're next available for work.</p>
+							</div>
+
+							<div>
+								<label for="portfolio">Portfolio URL</label>
+								<input type="url" id="portfolio" name="portfolio" placeholder="https://">
+								<p class="hint">Add a link to your portfolio, GitHub, or work samples.</p>
+							</div>
+
+							<div>
+								<label for="profile-photo">Profile photo</label>
+								<input type="file" id="profile-photo" name="photo" accept="image/*">
+								<p class="hint">Optional. JPG or PNG, up to 5MB.</p>
+							</div>
+						</fieldset>
+
+						<fieldset>
+							<legend>About you</legend>
+
+							<div>
+								<label for="bio">Short bio</label>
+								<textarea id="bio" name="bio" rows="5" placeholder="Tell clients about your experience, strengths, and the services you offer."></textarea>
+								<p class="hint">Keep it concise — 150–300 characters works well.</p>
+							</div>
+						</fieldset>
+
+						<p id="profile-note">By submitting, you confirm that the information is accurate. You can update your profile anytime.</p>
+
+						<div>
+							<button type="submit">Save changes.</button>
+							<button type="reset">Reset</button>
+						</div>
+					</form>
+				</div>
+			</section>
+		</main>
+
+		<footer>
+			<div class="container">
+				<div class="header-brand"><img src="../logo.jpg" alt="KasiKonnect" class="site-logo"><h1>Freelancer Details</h1></div>
+				<nav aria-label="Main navigation">
+					<ul>
+						<li><a href="home_home.html">Home</a></li>
+						<li><a href="freelancer_profile.html">Profile</a></li>
+						<li><a href="Job_Listings.html">Job Listings</a></li>
+						<li><a href="../login.html" onclick="logoutUser(); return false;">Logout</a></li>
+					</ul>
+				</nav>
+			</div>
+		</header>

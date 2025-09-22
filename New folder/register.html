@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Create account - KasiKonnect</title>
+    <link rel="stylesheet" href="register.css">
+    
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-brand"><img src="logo.jpg" alt="KasiKonnect" class="site-logo"><h1>KasiKonnect</h1></div>
+            <nav aria-label="Main navigation">
+                <ul>
+                    <li><a href="welcome.html">Home</a></li>
+                    <li><a href="login.html">Sign In</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="container card" style="max-width:720px;margin:1.5rem auto;">
+            <h2>Create your account</h2>
+            <form id="signupForm">
+
+                <label for="fullname">Full name</label>
+                <input type="text" id="fullname" name="fullname" placeholder="Enter your name and surname" required>
+
+                <label for="contact">Email address / phone number</label>
+                <input type="text" id="contact" name="contact" placeholder="Enter email or phone number" required>
+
+                <label for="idno">ID number</label>
+                <input type="text" id="idno" name="idno" placeholder="Enter your ID number" required>
+
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Create a strong password" required>
+
+                <label for="roleSelect">Select your role</label>
+                <select id="roleSelect" name="role" required>
+                    <option value="">-- Select role --</option>
+                    <option value="freelancer">Freelancer</option>
+                    <option value="small_business">Small Business</option>
+                    <option value="municipality">Municipality</option>
+                </select>
+
+                <div style="margin-top:1rem;display:flex;gap:0.5rem;align-items:center">
+                    <button type="submit" class="btn">Create account</button>
+                    <a href="login.html" class="muted">Already have an account?</a>
+                </div>
+            </form>
+            <script>
+            document.getElementById('signupForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                var select = document.getElementById('roleSelect');
+                var value = select ? select.value : '';
+                if (!value) {
+                    // let required attribute and browser validation handle this
+                    select.focus();
+                    return;
+                }
+                if (value === 'freelancer') {
+                    window.location.href = 'Freelancers/home_home.html';
+                } else if (value === 'small_business') {
+                    window.location.href = 'Business/home_business.html';
+                } else if (value === 'Client') {
+                    window.location.href = 'Client/home_client.html';
+                } else if (value === 'municipality') {
+                    window.location.href = 'welcome.html';
+                } else {
+                    window.location.href = 'welcome.html';
+                }
+            });
+            </script>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p class="muted">By creating an account you agree to our <a href="#">Terms of Service</a></p>
+        </div>
+    </footer>
+</body>
+</html>
+

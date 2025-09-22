@@ -1,0 +1,108 @@
+<!doctype html>
+<html>
+<head>
+	<link rel="stylesheet" href="../style.css">
+	<title>Freelancer Home</title>
+</head>
+<body>
+	<header>
+		<div class="container">
+			<div class="header-brand"><img src="../logo.jpg" alt="KasiKonnect" class="site-logo"><h1>KasiKonnect - Freelancer</h1></div>
+			<nav aria-label="Main navigation">
+				<ul>
+					<li><a href="freelancer_profile.html">Profile</a></li>
+					<li><a href="Job_Listings.html">Job Listings</a></li>
+					<li><a href="../welcome.html" onclick="logoutUser(); return false;">Logout</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+	<main>
+		<section class="container">
+			<h2>Welcome, <span id="freelancerName">Hebson</span></h2>
+			<p class="muted">Here's a quick look at your recent work and ratings.</p>
+
+			<!-- Summary stats -->
+			<div class="row" style="margin-top:1rem;">
+				<div class="card col" style="text-align:center;padding:1rem">
+					<div class="muted">Jobs completed</div>
+					<div id="jobsCompleted" style="font-size:1.6rem;font-weight:800;margin-top:0.5rem">0</div>
+				</div>
+				<div class="card col" style="text-align:center;padding:1rem">
+					<div class="muted">Average rating</div>
+					<div id="avgRating" style="font-size:1.6rem;font-weight:800;margin-top:0.5rem">0.0</div>
+				</div>
+				<div class="card col" style="text-align:center;padding:1rem">
+					<div class="muted">Earnings (last 30d)</div>
+					<div id="earnings" style="font-size:1.6rem;font-weight:800;margin-top:0.5rem">R0</div>
+				</div>
+			</div>
+
+			<!-- Past jobs list -->
+			<section style="margin-top:1.25rem">
+				<h3>Past jobs</h3>
+				<p class="muted">Recent jobs you've completed with client ratings and short notes.</p>
+				<div id="jobsList" class="job-grid" aria-live="polite"></div>
+			</section>
+		</section>
+	</main>
+	<footer>
+		<div class="container">
+			<p>&copy; 2025 KasiKonnect. All rights reserved.</p>
+		</div>
+			</footer>
+			<script>
+			// Mock data for past jobs
+			const mockJobs = [
+				{ id:1, title:'Kitchen sink repair', client:'Ms. Ndlovu', date:'2025-09-10', earnings:350, rating:5, note:'Fixed leak and replaced washer.'},
+				{ id:2, title:'Interior paint - 1 room', client:'Mr. van der Merwe', date:'2025-08-28', earnings:900, rating:4, note:'Clean finish; minor touch up needed.'},
+				{ id:3, title:'Garden maintenance', client:'Mrs. Patel', date:'2025-08-20', earnings:260, rating:5, note:'Great work, punctual.'},
+				{ id:4, title:'Socket replacement', client:'S. Mahlangu', date:'2025-07-30', earnings:400, rating:4, note:'Tested circuits and replaced 2 sockets.'},
+				{ id:5, title:'Mobile car wash', client:'D. Smith', date:'2025-07-12', earnings:120, rating:3, note:'Good but slower than expected.'}
+			];
+
+			function renderDashboard() {
+				const jobsList = document.getElementById('jobsList');
+				const jobsCompletedEl = document.getElementById('jobsCompleted');
+				const avgRatingEl = document.getElementById('avgRating');
+				const earningsEl = document.getElementById('earnings');
+
+				// populate list
+				jobsList.innerHTML = '';
+				let totalEarnings = 0;
+				let totalRating = 0;
+
+				mockJobs.forEach(j => {
+					totalEarnings += j.earnings;
+					totalRating += j.rating;
+
+					const card = document.createElement('article');
+					card.className = 'card';
+					card.innerHTML = `
+						<div style="display:flex;justify-content:space-between;align-items:center;gap:0.5rem">
+							<div>
+								<h4 style="margin:0">${j.title}</h4>
+								<div class="job-meta muted">${j.client} · ${j.date} · R${j.earnings}</div>
+							</div>
+							<div style="text-align:right">
+								<div class="rating">${j.rating}★</div>
+							</div>
+						</div>
+						<p style="margin-top:0.5rem;margin-bottom:0">${j.note}</p>
+					`;
+
+					jobsList.appendChild(card);
+				});
+
+				// summary
+				jobsCompletedEl.textContent = mockJobs.length;
+				avgRatingEl.textContent = (totalRating / mockJobs.length).toFixed(1);
+				earningsEl.textContent = 'R' + totalEarnings;
+			}
+
+			// initialize
+			renderDashboard();
+			</script>
+			<script src="../common.js"></script>
+	</body>
+	</html>

@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+    <link rel="stylesheet" href="business.css">
+    <title>Business Profile</title>
+    <script src="../common.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-brand"><img src="../logo.jpg" alt="KasiKonnect" class="site-logo"><h1>KasiKonnect - Business</h1></div>
+            <nav aria-label="Main navigation">
+                <ul>
+                    <li><a href="home_business.html">Home</a></li>
+                    <li><a href="business_profile.html">Profile</a></li>
+                    <li><a href="Funding.html">Funding Portal</a></li>
+                    <li><a href="../welcome.html" onclick="logoutUser(); return false;">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="container">
+            <h2>Business Profile</h2>
+            <p><strong>Business Name:</strong> <span id="businessName">Loading...</span></p>
+            <p><strong>Services Used By Clients:</strong> <span id="serviceCount">0</span></p>
+            <p><strong>Recent Clients:</strong> <span id="recentClients">Loading...</span></p>
+        </section>
+    </main>
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 KasiKonnect. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>
+        loadBusinessProfile();
+    </script>
+</body>
+</html>

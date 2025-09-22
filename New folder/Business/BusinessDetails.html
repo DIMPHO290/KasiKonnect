@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<link rel="stylesheet" href="../style.css">
+		<title>KasiKonnect Business Details</title>
+	</head>
+	<body>
+		<header>
+			<div class="container">
+				<h1>KasiKonnect</h1>
+				<nav aria-label="Main navigation">
+					<ul>
+						<li><a href="../welcome.html">Home</a></li>
+						<li><a href="../register.html">Get Started</a></li>
+						<li><a href="../login.html">Sign In</a></li>
+						<li><a href="../Freelancers/Job_Listings.html">Freelancers</a></li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+
+		<main>
+			<section id="business-details" aria-labelledby="business-details-heading">
+				<div class="container">
+					<h2 id="business-details-heading">Enter Your Business Details</h2>
+					<form action="#" method="post">
+						<label for="businessName">Business Name</label><br>
+						<input type="text" id="businessName" name="businessName" required><br><br>
+
+						<label for="ownerName">Owner Name</label><br>
+						<input type="text" id="ownerName" name="ownerName" required><br><br>
+
+						<label for="email">Email</label><br>
+						<input type="email" id="email" name="email" required><br><br>
+
+						<label for="phone">Phone Number</label><br>
+						<input type="tel" id="phone" name="phone" required><br><br>
+
+						<label for="address">Business Address</label><br>
+						<input type="text" id="address" name="address" required><br><br>
+
+						<label for="type">Business Type</label><br>
+						<input type="text" id="type" name="type" required><br><br>
+
+						<label for="description">Description</label><br>
+						<textarea id="description" name="description" rows="4" required></textarea><br><br>
+
+						<label for="employees">Number of Employees</label><br>
+						<input type="number" id="employees" name="employees" min="1" required><br><br>
+
+						<label for="founded">Year Founded</label><br>
+						<input type="number" id="founded" name="founded" min="1900" max="2025" required><br><br>
+
+						<button type="submit">Submit</button>
+					</form>
+				</div>
+			</section>
+		</main>
+
+		<footer>
+			<div class="container">
+				<div class="header-brand"><img src="../logo.jpg" alt="KasiKonnect" class="site-logo"><h1>Business Details</h1></div>
+				<nav aria-label="Main navigation">
+					<ul>
+						<li><a href="home_business.html">Home</a></li>
+						<li><a href="business_profile.html">Profile</a></li>
+						<li><a href="Funding.html">Funding Portal</a></li>
+						<li><a href="../login.html" onclick="logoutUser(); return false;">Logout</a></li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+</html>

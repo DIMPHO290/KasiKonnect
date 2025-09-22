@@ -1,0 +1,199 @@
+
+:root {
+
+  --kk-blue: #3CBEC8;
+  --kk-dark: #323232;
+
+
+  --kk-light: #F5F5F5;
+  --kk-offwhite: #FAFAFA;
+
+
+  --kk-warm: #FFA500; 
+  --kk-success: #4CAF50;
+  --kk-error: #F44336;
+  --kk-warning: #FFEB3B;
+
+  --max-width: 1100px;
+  --radius: 8px;
+  --container-pad: 1rem;
+  --ui-gap: 0.75rem;
+}
+
+
+
+* { box-sizing: border-box; }
+html, body {
+  height: 100%;
+  margin: 0;
+  background: var(--kk-offwhite);
+  color: var(--kk-dark);
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Make pages use a column flex layout so footer can stick to bottom on short pages */
+body { display: flex; flex-direction: column; min-height: 100vh; }
+main { flex: 1 0 auto; }
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--container-pad);
+}
+
+main { padding: 2rem 0; }
+
+
+/* ============
+   Header / nav
+   ============ */
+header {
+  background: linear-gradient(90deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));
+  border-bottom: 1px solid rgba(0,0,0,0.04);
+}
+
+header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.25rem;
+  color: var(--kk-blue);
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: var(--ui-gap);
+}
+
+nav a {
+  color: var(--kk-dark);
+  text-decoration: none;
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+nav a:hover,
+nav a:focus {
+  background: var(--kk-light);
+  color: var(--kk-blue);
+}
+
+
+/* ============
+   Typography
+   ============ */
+h1,h2,h3,h4 { color: var(--kk-dark); margin: 0 0 0.5rem 0; }
+h2 { font-size: 1.4rem; }
+p  { margin: 0 0 1rem 0; color: #444; }
+
+
+/* =======
+   Cards
+   ======= */
+.card {
+  background: var(--kk-light);
+  padding: 1rem;
+  border-radius: 10px;
+  border: 1px solid rgba(0,0,0,0.03);
+}
+
+/* small helper for compact card rows inside dashboards */
+.card.compact { padding: 0.6rem; }
+
+
+/* =======
+   Forms
+   ======= */
+label { display: block; margin-bottom: 0.25rem; font-size: 0.95rem; }
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"],
+input[type="number"],
+select,
+textarea {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: var(--radius);
+  background: #fff;
+  font-size: 1rem;
+}
+
+/* Gentle focus ring using box-shadow for accessibility */
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(60, 190, 200, 0.08);
+  border-color: var(--kk-blue);
+}
+
+/* Tweak select appearance slightly */
+select { appearance: none; background-image: linear-gradient(45deg, transparent 50%, var(--kk-dark) 50%), linear-gradient(135deg, var(--kk-dark) 50%, transparent 50%); background-position: calc(100% - 1rem) calc(50% - 0.15rem), calc(100% - 0.6rem) calc(50% - 0.15rem); background-size: 6px 6px, 6px 6px; background-repeat: no-repeat; padding-right: 2rem; }
+
+
+/* =======
+   Buttons / actions
+   ======= */
+button, .btn, input[type="submit"] {
+  background: var(--kk-blue);
+  color: #fff;
+  border: none;
+  padding: 0.7rem 1rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.btn.secondary { background: var(--kk-warm); }
+button:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.muted { color: #666; font-size: 0.95rem; }
+.links { display:flex; gap: 0.5rem; align-items:center; }
+.links a { color: var(--kk-blue); text-decoration: none; font-weight: 600; }
+
+
+/* =======
+   Footer
+   ======= */
+footer { border-top: 1px solid rgba(0,0,0,0.04); padding: 1rem 0; background: transparent; }
+
+
+/* ============
+   Utilities
+   ============ */
+.row { display:flex; gap:1rem; }
+.col { flex:1; }
+
+
+/* ============
+   Responsive
+   ============ */
+@media (max-width: 700px) {
+  nav ul { flex-direction: column; background: transparent; }
+  header .container { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+}
+
+
+/* ===================
+   Accessibility helper
+   =================== */
+[aria-live] { min-height: 1.5em; }
+
+/* Logo utility */
+.site-logo { height: 40px; width: auto; display:inline-block; vertical-align:middle; margin-right:0.6rem; }
+.header-brand { display:flex; align-items:center; gap:0.5rem; }
+

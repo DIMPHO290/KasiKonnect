@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+    <link rel="stylesheet" href="../style.css">
+    <title>Freelancer Profile</title>
+    <script src="../common.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>KasiKonnect - Freelancer</h1>
+            <nav aria-label="Main navigation">
+                <ul>
+                    <li><a href="homefrl.html">Home</a></li>
+                    <li><a href="Job_Listings.html">Job Listings</a></li>
+                    <li><a href="../welcome.html" onclick="logoutUser(); return false;">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="container">
+            <h2>Freelancer Profile</h2>
+            <p><strong>Freelancer Name:</strong> <span id="freelancerName">Loading...</span></p>
+            <p><strong>Jobs Completed:</strong> <span id="jobsCompleted">0</span></p>
+            <p><strong>Clients Served:</strong> <span id="clientsServed">Loading...</span></p>
+           
+        </section>
+        <script>
+        function toggleOtherService() {
+            var select = document.getElementById('serviceType');
+            var other = document.getElementById('otherService');
+            other.style.display = select.value === 'Other' ? 'block' : 'none';
+        }
+        </script>
+    </main>
+    <footer>
+        <div class="container">
+            <div class="header-brand"><img src="../logo.jpg" alt="KasiKonnect" class="site-logo"><h1>Freelancer Profile</h1></div>
+            <nav aria-label="Main navigation">
+                <ul>
+                    <li><a href="home_home.html">Home</a></li>
+                    <li><a href="freelancer_profile.html">Profile</a></li>
+                    <li><a href="Job_Listings.html">Job Listings</a></li>
+                    <li><a href="../login.html" onclick="logoutUser(); return false;">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
