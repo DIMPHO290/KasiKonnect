@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>Municipality Home - KasiKonnect</title>
+        <link rel="stylesheet" href="../style.css">
+        <script src="../common.js"></script>
+        <style>
+            .mini-stats { display:flex; gap:1rem; margin-top:1rem; }
+            .mini-stats .stat { flex:1; text-align:center; padding:0.75rem; }
+            .apps-table { width:100%; border-collapse: collapse; margin-top:1rem; }
+            .apps-table th, .apps-table td { padding:0.6rem 0.75rem; text-align:left; border-bottom:1px solid rgba(0,0,0,0.06); }
+            .apps-table th { font-weight:700; }
+            .small-muted { color:#666; font-size:0.9rem; }
+            .action-row { display:flex; gap:0.5rem; }
+        </style>
+</head>
+<body>
+    <body>
+            <header>
+                    <div class="container">
+                            <div class="header-brand"><img src="../logo.jpg" alt="KasiKonnect" class="site-logo"><h1>Municipality Dashboard</h1></div>
+                            <!-- ...existing code... -->
+                    </div>
+            </header>
+            <main>
+                    <section class="container">
+                        <div class="card">
+                            <h2>Funding applications</h2>
+                            <p class="muted">Review recent funding requests from small businesses and community groups. Approve or reject applications, and track totals.</p>
+                            <div class="mini-stats">
+                                <div class="card stat">
+                                    <div class="small-muted">Total applications</div>
+                                    <div id="totalApps" style="font-size:1.25rem;font-weight:700">—</div>
+                                </div>
+                                <div class="card stat">
+                                    <div class="small-muted">Requested (ZAR)</div>
+                                    <div id="totalRequested" style="font-size:1.25rem;font-weight:700">—</div>
+                                </div>
+                                <div class="card stat">
+                                    <div class="small-muted">Approved (ZAR)</div>
+                                    <div id="totalApproved" style="font-size:1.25rem;font-weight:700">—</div>
+                                </div>
+                            </div>
+                            <div style="margin-top:1rem;display:flex;gap:1rem;align-items:center;">
+                                <label for="filterStatus" class="small-muted">Filter:</label>
+                                <select id="filterStatus">
+                                    <option value="all">All</option>
+                                    <option value="pending">Pending</option>
+                                    <option value="approved">Approved</option>
+                                    <option value="rejected">Rejected</option>
+                                </select>
+                                <input type="text" id="searchOrg" placeholder="Search by business name or reg id" style="margin-left:auto;max-width:320px;">
+                            </div>
+                            <table class="apps-table" aria-describedby="appsDesc">
+                                <caption id="appsDesc" class="small-muted">List of recent funding applications</caption>
+                                <thead>
+                                    <tr>
+                                        <th>Business</th>
+                                        <th>Reg ID</th>
+                                        <th>Requested</th>
+                                        <th>Purpose</th>
+                                        <th>Submitted</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="appsBody">
+                                    <!-- rows rendered by JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+            </main>
+            <footer>
+                    <div class="container">
+                            <p class="muted">&copy; 2025 KasiKonnect</p>
+                    </div>
+            </footer>
+            <script>
+                // ...existing JS...
+            </script>
+    </body>
+    </html>
+    <script>
+        // Mock applications data
+        const mockApps = [
+            { id: 'APP-001', name: 'Thandi Repairs', reg: 'BRN-1001', amount: 25000, purpose: 'Equipment and stock', date: '2025-09-01', status: 'pending' },
+            { id: 'APP-002', name: 'Ubuntu Catering', reg: 'BRN-1002', amount: 45000, purpose: 'Kitchen upgrade', date: '2025-08-28', status: 'approved' },
+            { id: 'APP-003', name: 'Soweto Cleaners', reg: 'BRN-1003', amount: 15000, purpose: 'Cleaning supplies', date: '2025-09-05', status: 'pending' },
+            { id: 'APP-004', name: 'Mabena Grocers', reg: 'BRN-1004', amount: 60000, purpose: 'Fridge & shelving', date: '2025-09-03', status: 'rejected' },
+            { id: 'APP-005', name: 'Kasi Movers', reg: 'BRN-1005', amount: 32000, purpose: 'Delivery van deposit', date: '2025-08-20', status: 'approved' }
+        ];
+
+        function currency(n) { return 'R' + n.toLocaleString(); }
+
+        function renderApps(filter='all', search=''){
+            const tbody = document.getElementById('appsBody');
+            tbody.innerHTML = '';
+            const rows = mockApps.filter(a => {
+                if(filter !== 'all' && a.status !== filter) return false;
+                if(search){ const q = search.toLowerCase(); return a.name.toLowerCase().includes(q) || a.reg.toLowerCase().includes(q) || a.id.toLowerCase().includes(q); }
+                return true;
+            });
+
+            rows.forEach(a => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td><strong>${a.name}</strong><div class="small-muted">${a.id}</div></td>
+                    <td>${a.reg}</td>
+                    <td>${currency(a.amount)}</td>
+                    <td>${a.purpose}</td>
+                    <td class="small-muted">${a.date}</td>
+                    <td style="text-transform:capitalize">${a.status}</td>
+                    <td>
+                        <div class="action-row">
+                            ${a.status === 'pending' ? `<button class=\"btn\" data-action=\"approve\" data-id=\"${a.id}\">Approve</button><button class=\"btn secondary\" data-action=\"reject\" data-id=\"${a.id}\">Reject</button>` : `<button class=\"btn ghost\" disabled>—</button>`}
+                        </div>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+
+            // update stats
+            document.getElementById('totalApps').textContent = mockApps.length;
+            const requested = mockApps.reduce((s,i)=>s+i.amount,0);
+            document.getElementById('totalRequested').textContent = currency(requested);
+            const approved = mockApps.filter(a=>a.status==='approved').reduce((s,i)=>s+i.amount,0);
+            document.getElementById('totalApproved').textContent = currency(approved);
+        }
+
+        // simple event delegation for actions
+        document.addEventListener('click', (e) => {
+            const btn = e.target.closest('button[data-action]');
+            if(!btn) return;
+            const action = btn.getAttribute('data-action');
+            const id = btn.getAttribute('data-id');
+            const app = mockApps.find(x=>x.id===id);
+            if(!app) return;
+            if(action === 'approve') app.status = 'approved';
+            if(action === 'reject') app.status = 'rejected';
+            renderApps(document.getElementById('filterStatus').value, document.getElementById('searchOrg').value);
+        });
+
+        // wire up filter/search
+        document.getElementById('filterStatus').addEventListener('change', (e)=> renderApps(e.target.value, document.getElementById('searchOrg').value));
+        document.getElementById('searchOrg').addEventListener('input', (e)=> renderApps(document.getElementById('filterStatus').value, e.target.value));
+
+        // initial render
+        renderApps();
+    </script>
+ </body>
+ </html>

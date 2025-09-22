@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+	<link rel="stylesheet" href="../style.css">
+	<title>Client Home</title>
+	<script src="../common.js"></script>
+<body>
+		<header>
+				<div class="container">
+						<div class="header-brand"><img src="../logo.jpg" alt="KasiKonnect" class="site-logo"><h1>KasiKonnect - Client</h1></div>
+						<!-- ...existing code... -->
+				</div>
+		</header>
+		<main>
+				<!-- ...existing dashboard content... -->
+		</main>
+</body>
+		   <section class="container">
+			   <h2>Welcome, Client!</h2>
+			   <p>Find local services around you or search for something specific.</p>
+			   <input type="text" id="serviceSearch" placeholder="Search for a service..." onkeyup="filterServices()" style="width: 100%; padding: 8px; margin-bottom: 16px;">
+			   <ul id="serviceList">
+				   <li>Hair Stylist</li>
+				   <li>Nail Technician</li>
+				   <li>Handy-man</li>
+				   <li>Painter</li>
+				   <li>Baby Sitter</li>
+				   <li>Plumber</li>
+				   <li>Electrician</li>
+				   <li>Gardener</li>
+				   <li>Car Wash</li>
+				   <li>Other</li>
+			   </ul>
+		   </section>
+		   <script>
+		   function filterServices() {
+			   var input = document.getElementById('serviceSearch');
+			   var filter = input.value.toLowerCase();
+			   var ul = document.getElementById('serviceList');
+			   var li = ul.getElementsByTagName('li');
+			   for (var i = 0; i < li.length; i++) {
+				   var txtValue = li[i].textContent || li[i].innerText;
+				   li[i].style.display = txtValue.toLowerCase().indexOf(filter) > -1 ? '' : 'none';
+			   }
+		   }
+		   </script>
+	</main>
+	<footer>
+		<div class="container">
+			<div class="header-brand"><img src="../logo.jpg" alt="KasiKonnect" class="site-logo"><h1>KasiKonnect - Client</h1></div>
+			<nav aria-label="Main navigation">
+				<ul>
+					<li><a href="home_client.html">Home</a></li>
+					<li><a href="client_profile.html">Profile</a></li>
+					<li><a href="client_details.html">Client Details</a></li>
+					<li><a href="../login.html" onclick="logoutUser(); return false;">Logout</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>

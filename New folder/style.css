@@ -1,0 +1,188 @@
+/*
+  style.css — KasiKonnect (Enhanced for vivid, modern look)
+*/
+
+/* ========================
+   Design tokens / variables
+   ======================== */
+:root {
+  /* Primary */
+  --kk-blue: #0A74FF;
+  --kk-dark: #323232;
+
+  /* Neutral / backgrounds */
+  --kk-light: #F5F5F5;
+  --kk-offwhite: #FAFAFA;
+
+  /* Accent / feedback */
+  --kk-warm: #FFA500;
+  --kk-success: #0A74FF;
+  --kk-error: #F44336;
+  --kk-warning: #FFEB3B;
+
+  --max-width: 1100px;
+  --radius: 10px;
+  --ui-gap: 1rem;
+  --container-pad: 1rem;
+}
+
+/* Base / layout */
+* { box-sizing: border-box; }
+html, body {
+  height: 100%;
+  margin: 0;
+  background: linear-gradient(135deg, #f9fbff, #e6ecf5); /* lively gradient background */
+  color: var(--kk-dark);
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+body { display: flex; flex-direction: column; min-height: 100vh; }
+main { flex: 1 0 auto; padding: 2rem 0; }
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--container-pad);
+}
+
+/* Header */
+header {
+  background: #fff;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06); /* subtle depth */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1rem;
+}
+header h1 {
+  margin: 0;
+  font-size: 1.25rem;
+  background: linear-gradient(90deg, var(--kk-blue), #3fa9f5);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Nav */
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: var(--ui-gap);
+}
+nav a {
+  color: var(--kk-dark);
+  text-decoration: none;
+  padding: 0.5rem 0.8rem;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: all 0.25s ease;
+}
+nav a:hover,
+nav a:focus {
+  background: var(--kk-blue);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* Typography */
+h1,h2,h3,h4 { color: var(--kk-dark); margin: 0 0 0.5rem 0; }
+h2 { font-size: 1.5rem; }
+p  { margin: 0 0 1rem 0; color: #555; line-height: 1.6; }
+
+/* Cards */
+.card {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  border: 1px solid rgba(0,0,0,0.03);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.05); /* soft card shadow */
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+}
+
+/* Forms */
+label { display: block; margin-bottom: 0.25rem; font-size: 0.95rem; font-weight: 500; }
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"],
+input[type="number"],
+select,
+textarea {
+  width: 100%;
+  padding: 0.7rem 0.9rem;
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: var(--radius);
+  background: #fff;
+  font-size: 1rem;
+  transition: border 0.25s ease, box-shadow 0.25s ease;
+}
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(10, 116, 255, 0.15);
+  border-color: var(--kk-blue);
+}
+
+/* Buttons */
+.btn, button, input[type="submit"] {
+  background: linear-gradient(90deg, var(--kk-blue), #3fa9f5);
+  color: #fff;
+  border: none;
+  padding: 0.8rem 1.2rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-weight: 700;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn:hover, button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+.btn-ghost,
+.btn.secondary {
+  background: transparent;
+  color: var(--kk-blue);
+  border: 1px solid rgba(10,116,255,0.3);
+}
+button:disabled, .btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.muted { color: #777; font-size: 0.95rem; }
+.links { display:flex; gap: 0.5rem; align-items:center; }
+.links a { color: var(--kk-blue); text-decoration: none; font-weight: 600; }
+
+/* Footer */
+footer {
+  border-top: 1px solid rgba(0,0,0,0.06);
+  padding: 1rem 0;
+  background: #fff;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Utilities */
+.row { display:flex; gap:1rem; }
+.col { flex:1; }
+
+/* Logo */
+.site-logo { height: 64px; width: auto; display:inline-block; vertical-align:middle; margin-right:0.8rem; }
+.header-brand { display:flex; align-items:center; gap:0.5rem; }
+
+/* Responsive */
+@media (max-width: 700px) {
+  nav ul { flex-direction: column; background: transparent; }
+  header .container { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+  .site-logo { height: 44px; }
+}
