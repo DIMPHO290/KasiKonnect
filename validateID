@@ -1,0 +1,13 @@
+function validateID(id) {
+  if (!/^\d{13}$/.test(id)) return false;
+
+  // Extract birthdate
+  const year = parseInt(id.substring(0, 2), 10);
+  const month = parseInt(id.substring(2, 4), 10);
+  const day = parseInt(id.substring(4, 6), 10);
+
+  const fullYear = year < 25 ? 2000 + year : 1900 + year; // Adjust century
+  const date = new Date(fullYear, month - 1, day);
+
+  return date.getDate() === day && date.getMonth() + 1 === month && date.getFullYear() === fullYear;
+}
